@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import { ThemeProvider } from '@mui/material/styles';
-import './assets/fonts.css';
 import './App.css'
 import theme from './theme/mui-theme';
 import { Button, CssBaseline, Typography } from '@mui/material';
