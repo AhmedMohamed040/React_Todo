@@ -2,11 +2,11 @@ import { ThemeOptions, createTheme,alpha } from "@mui/material/styles";
 import { filledInputClasses } from '@mui/material/FilledInput';
 import { CheckboxCheckedIcon, CheckboxIcon, CheckboxIndeterminateIcon } from "./theme-icons";
 import { CheckboxProps, checkboxClasses } from '@mui/material/Checkbox';
-import font400 from '../../public/fonts/baloo-bhaijaan2-regular.ttf';
-import font500 from '../../public/fonts/baloo-bhaijaan2-medium.ttf';
-import font600 from '../../public/fonts/baloo-bhaijaan2-semi-bold.ttf';
-import font700 from '../../public/fonts/baloo-bhaijaan2-bold.ttf';
-import font800 from '../../public/fonts/baloo-bhaijaan2-extra-bold.ttf';
+import font400 from '/src/assets/fonts/baloo-bhaijaan2-regular.ttf';
+import font500 from '/src/assets/fonts/baloo-bhaijaan2-medium.ttf';
+import font600 from '/src/assets/fonts/baloo-bhaijaan2-semi-bold.ttf';
+import font700 from '/src/assets/fonts/baloo-bhaijaan2-bold.ttf';
+import font800 from '/src/assets/fonts/baloo-bhaijaan2-extra-bold.ttf';
 
 
 export function remToPx(value: string) {
