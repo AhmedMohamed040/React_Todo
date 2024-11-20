@@ -14,7 +14,7 @@ export const TodosContextProvider = ({ children }: any) => {
       completed: false,
       content: content || "",
     };
-    setTodos([...todos, newTodoItem]);
+    setTodos([newTodoItem, ...todos]);
     localStorage.setItem("todos", JSON.stringify([...todos, newTodoItem]));
   };
 
