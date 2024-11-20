@@ -60,7 +60,7 @@ export default function View() {
       <Grid xs={12}>
         <Card sx={{ px: 3, py: 2, my: 3, minHeight: 4, borderRadius: 9, }}>
           <CardHeader
-            sx={{ textAlign: "center", display: 'flex', justifyContent:{xs:'center', md:'space-between'}, alignItems:{md:'center', xs:'space-between'}, flexDirection:{md:'row', xs:'column'} }}
+            sx={{'.MuiCardHeader-action':{alignSelf:'unset'},textAlign: "center", display: 'flex', justifyContent:{xs:'center', md:'space-between'}, alignItems:{md:'center', xs:'space-between'}, flexDirection:{md:'row', xs:'column'} }}
             action={
               <Box
                 sx={{
@@ -167,7 +167,7 @@ export default function View() {
       </Grid>
       {todos.map((todo) => (
         <Grid key={todo.id} xs={12}>
-          <TodoCard todoItem={todo} />
+          <TodoCard todo={todo} />
         </Grid>
       ))}
     </Grid>

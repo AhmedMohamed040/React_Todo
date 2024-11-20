@@ -10,22 +10,21 @@ import {
   IconButton,
 } from "@mui/material";
 import Iconify from "../iconify";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { TodoItem } from "../../types/todo";
 import { NewEditTodoDialog, ViewTodoDialog } from "../todo-dialog";
 import { ConfirmDialog } from "../custom-dialog";
 import { useTodosContext } from "../../contexts/todos-context";
 
 interface TodoCardProps {
-  todoItem: TodoItem;
+  todo: TodoItem;
 }
-const TodoCard = function ({ todoItem }: TodoCardProps) {
+const TodoCard = function ({ todo }: TodoCardProps) {
+  const [todoItem, setTodoITem]= useState(todo);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isDialogViewOpen, setIsDialogViewOpen] = useState(false);
-  const [choosenTodo, setChoosenTodo] = useState<TodoItem | undefined>(
-    undefined
-  );
+  const [choosenTodo, setChoosenTodo] = useState<TodoItem | undefined>(undefined);
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const [deleteItemId, setDeleteItemId] = useState("");
@@ -55,6 +54,10 @@ const TodoCard = function ({ todoItem }: TodoCardProps) {
   const handleConfirmDelete = useCallback(() => {
     todosContext?.removeTodo(todoItem?.id);
   }, [deleteItemId]);
+
+  useEffect(() => {
+    setTodoITem(todo)
+  }, [ todo?.completed]);
   return (
     <Card sx={{ borderRadius: 9, borderTopLeftRadius: 0, px: 3 }}>
       <CardHeader
@@ -69,7 +72,8 @@ const TodoCard = function ({ todoItem }: TodoCardProps) {
             }}
           >
             <Checkbox
-              value={todoItem?.completed}
+              checked={todoItem?.completed}
+              name="todoItem"
               onChange={handleToggleTodo}
               color={todoItem?.completed ? "secondary" : "primary"}
               sx={{ position: "absolute", transform: "translate(0%,-4%)" }}
