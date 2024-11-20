@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# Dynamic To-Do List Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This repository contains a **Dynamic To-Do List Application** built with **React.js**. The app is designed to be responsive and allows users to manage their tasks efficiently with essential features, including adding, editing, deleting, and filtering tasks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 1. **Add New Task**
+- Users can add new tasks by entering the task name in an input field and clicking the "Add" button.
+- New tasks will appear in the task list.
 
-- Configure the top-level `parserOptions` property like this:
+### 2. **Mark Task as Completed**
+- Each task has a checkbox to mark it as completed.
+- Completed tasks are visually distinguished with a strikethrough or a different color.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 3. **Edit Task**
+- Users can edit the name of any task directly in the task list.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 4. **Delete Task**
+- A "Delete" button is provided for each task, allowing users to remove unwanted tasks from the list.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 5. **Filter Tasks**
+- Filtering options allow users to view:
+  - **All Tasks**: Displays all tasks.
+  - **Completed Tasks**: Displays only completed tasks.
+  - **Pending Tasks**: Displays only tasks that are not yet completed.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### 6. **Search Tasks**
+- A search bar enables users to quickly find tasks by their names.
+
+### 7. **Responsive Design**
+- The app is designed to look good on both desktop and mobile devices.
+
+### 8. **Save Tasks**
+- Tasks are stored in `localStorage` to ensure they persist even after the page is refreshed.
+
+---
+
+## Bonus Features (Optional)
+- **State Management**: Use React Context or Redux to handle the task state more efficiently.
+
+---
+
+## How to Run the Application
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/todo-list-app.git
+   cd todo-list-app
