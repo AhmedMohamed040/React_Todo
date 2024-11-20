@@ -7,6 +7,7 @@ import font500 from '/src/assets/fonts/baloo-bhaijaan2-medium.ttf';
 import font600 from '/src/assets/fonts/baloo-bhaijaan2-semi-bold.ttf';
 import font700 from '/src/assets/fonts/baloo-bhaijaan2-bold.ttf';
 import font800 from '/src/assets/fonts/baloo-bhaijaan2-extra-bold.ttf';
+import { button } from './components/button';
 
 
 export function remToPx(value: string) {
@@ -218,6 +219,23 @@ const theme = createTheme(
           },
         },
       },
+      MuiButton: {
+        defaultProps: {
+          color: 'inherit',
+          disableElevation: true,
+        },
+        ...button
+      },
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            position: 'relative',
+            boxShadow: `0 1px 2px 0 ${alpha('#919EAB', 0.16)}`,
+            borderRadius:  7,
+            zIndex: 0, // Fix Safari overflow: hidden with border radius
+          },
+        },
+      },
     },
 
   } as ThemeOptions);
@@ -228,14 +246,13 @@ const modifiedTheme = {
     ...theme.palette,
     primary: {
       ...theme.palette.primary,
-      lightest: "#EBF8F8",
-      light: "#B8D0DF",
-      main: '#84A7C5',
-      dark: "#1D5691",
-      darkest: "#1D5691"
+      lightest: "#BEA5BE",
+      light: "#A987A8",
+      main: '#663966',
+      dark: "#511F52",
+      darkest: "#3D173E"
     },
     warning: {
-     
         ...theme.palette.warning,
         lightest: "#FEEFD1",
         light: "#FCCF76",
@@ -244,6 +261,27 @@ const modifiedTheme = {
         darkest: "#CE9117"
       
     }, 
+    error: {
+      ...theme.palette.error,
+      lighter: '#FFE9D5',
+      light: '#FFAC82',
+      main: '#FF5630',
+      dark: '#B71D18',
+      darker: '#7A0916',
+      contrastText: '#FFFFFF',
+    
+  }, 
+  secondary: {
+    ...theme.palette.secondary,
+    lighter: '#F9FAFB',
+    light: '#DFE3E8',
+    main: '#C4CDD5',
+    dark: '#637381',
+    darker: '#161C24',
+    contrastText: '#FFFFFF',
+  
+}, 
+   
     grey: {
         0: '#FFFFFF',
         100: '#F9FAFB',
@@ -255,6 +293,7 @@ const modifiedTheme = {
         700: '#454F5B',
         800: '#212B36',
         900: '#161C24',
+        1000: '#1d2625'
   }
   },
   breakpoints: {
