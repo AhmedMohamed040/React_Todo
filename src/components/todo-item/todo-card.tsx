@@ -57,7 +57,7 @@ const TodoCard = function ({ todo }: TodoCardProps) {
 
   useEffect(() => {
     setTodoITem(todo)
-  }, [ todo?.completed]);
+  }, [ todo?.completed, todo]);
   return (
     <Card sx={{ borderRadius: 9, borderTopLeftRadius: 0, px: 3 }}>
       <CardHeader
