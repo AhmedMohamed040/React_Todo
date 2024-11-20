@@ -23,13 +23,13 @@ const TodoCard = function ({ todoItem }: TodoCardProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isDialogViewOpen, setIsDialogViewOpen] = useState(false);
-  const [choosenTodo, setChoosenTodo] = useState<TodoItem | undefined>(undefined);
+  const [choosenTodo, setChoosenTodo] = useState<TodoItem | undefined>(
+    undefined
+  );
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const [deleteItemId, setDeleteItemId] = useState("");
   const todosContext = useTodosContext();
-   const todos = todosContext?.todos; 
-
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -45,11 +45,11 @@ const TodoCard = function ({ todoItem }: TodoCardProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleEditTodo =(item:{title:string,content:string})=>{
+  const handleEditTodo = (item: { title: string; content: string }) => {
     todosContext?.editTodo(todoItem?.id, item?.title, item?.content);
     setIsDialogOpen(false);
   };
-  const handleToggleTodo = ()=>{
+  const handleToggleTodo = () => {
     todosContext?.toggleComplete(todoItem?.id);
   };
   const handleConfirmDelete = useCallback(() => {
@@ -69,7 +69,7 @@ const TodoCard = function ({ todoItem }: TodoCardProps) {
             }}
           >
             <Checkbox
-              value={todoItem?.completed }
+              value={todoItem?.completed}
               onChange={handleToggleTodo}
               color={todoItem?.completed ? "secondary" : "primary"}
               sx={{ position: "absolute", transform: "translate(0%,-4%)" }}

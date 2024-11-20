@@ -18,7 +18,7 @@ import { useTodosContext } from "../../contexts/todos-context";
 export default function View() {
   const theme = useTheme();
   const todosContext = useTodosContext();
-  let [todos, setTodos] = useState(todosContext?.todos); 
+  let [todos, setTodos] = useState(todosContext?.todos);
   const isSmallScreen = useMediaQuery(theme.breakpoints.up("sm"));
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,31 +29,31 @@ export default function View() {
     setSearchTerm(term);
 
     const filteredTodos = term
-    ? todos.filter((todo) =>
-        todo.title.toLowerCase().includes(term.toLowerCase())
-      )
-    : [];
+      ? todos.filter((todo) =>
+          todo.title.toLowerCase().includes(term.toLowerCase())
+        )
+      : [];
 
-  setTodos(filteredTodos);
-};
-  const handleAddTodo = (item:{title:string, content:string})=>{
+    setTodos(filteredTodos);
+  };
+  const handleAddTodo = (item: { title: string; content: string }) => {
     todosContext?.addTodo(item?.title, item?.content);
     setIsDialogOpen(false);
   };
-useEffect(() => {
-  const filteredTodos = searchTerm
-    ? todosContext?.todos.filter((todo) =>
-        todo.title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : filterTerm === 'all'
-    ? todosContext?.todos
-    : filterTerm === 'completed'
-    ? todosContext?.todos.filter((todo) => todo.completed)
-    : todosContext?.todos.filter((todo) => !todo.completed);
+  useEffect(() => {
+    const filteredTodos = searchTerm
+      ? todosContext?.todos.filter((todo) =>
+          todo.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : filterTerm === "all"
+      ? todosContext?.todos
+      : filterTerm === "completed"
+      ? todosContext?.todos.filter((todo) => todo.completed)
+      : todosContext?.todos.filter((todo) => !todo.completed);
 
-  setTodos(filteredTodos);
-  searchTerm? setFilterTerm('all'): '';
-}, [todosContext?.todos, filterTerm, searchTerm]);
+    setTodos(filteredTodos);
+    searchTerm ? setFilterTerm("all") : "";
+  }, [todosContext?.todos, filterTerm, searchTerm]);
 
   return (
     <Grid container justifyContent="center" spacing={3}>
@@ -70,29 +70,53 @@ useEffect(() => {
                   textAlign: "center",
                 }}
               >
-                <Tooltip title="All todos" placement="top" arrow onClick={()=>setFilterTerm('all')}>
-                  <IconButton disabled={Boolean(searchTerm)} size={isSmallScreen ? "medium" : "small"}>
+                <Tooltip
+                  title="All todos"
+                  placement="top"
+                  arrow
+                  onClick={() => setFilterTerm("all")}
+                >
+                  <IconButton
+                    disabled={Boolean(searchTerm)}
+                    size={isSmallScreen ? "medium" : "small"}
+                  >
                     <Iconify
                       width={isSmallScreen ? 35 : 25}
-                      color={Boolean(searchTerm)?"grey.400":"primary.main"}
+                      color={Boolean(searchTerm) ? "grey.400" : "primary.main"}
                       icon="solar:list-bold-duotone"
                     />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Pending todos" placement="top" arrow onClick={()=>setFilterTerm('pending')}>
-                  <IconButton disabled={Boolean(searchTerm)} size={isSmallScreen ? "medium" : "small"}>
+                <Tooltip
+                  title="Pending todos"
+                  placement="top"
+                  arrow
+                  onClick={() => setFilterTerm("pending")}
+                >
+                  <IconButton
+                    disabled={Boolean(searchTerm)}
+                    size={isSmallScreen ? "medium" : "small"}
+                  >
                     <Iconify
                       width={isSmallScreen ? 35 : 25}
-                       color={Boolean(searchTerm)?"grey.400":"primary.main"}
+                      color={Boolean(searchTerm) ? "grey.400" : "primary.main"}
                       icon="solar:pin-list-bold"
                     />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Completed todos" placement="top" arrow onClick={()=>setFilterTerm('completed')}>
-                  <IconButton disabled={Boolean(searchTerm)} size={isSmallScreen ? "medium" : "small"}>
+                <Tooltip
+                  title="Completed todos"
+                  placement="top"
+                  arrow
+                  onClick={() => setFilterTerm("completed")}
+                >
+                  <IconButton
+                    disabled={Boolean(searchTerm)}
+                    size={isSmallScreen ? "medium" : "small"}
+                  >
                     <Iconify
                       width={isSmallScreen ? 35 : 25}
-                      color={Boolean(searchTerm)?"grey.400":"primary.main"}
+                      color={Boolean(searchTerm) ? "grey.400" : "primary.main"}
                       icon="solar:list-check-minimalistic-bold"
                     />
                   </IconButton>
@@ -105,7 +129,7 @@ useEffect(() => {
                 color="primary.main"
                 variant="h4"
               >
-               {`Todo`}
+                {`Todo`}
               </Typography>
             }
           />
@@ -121,7 +145,7 @@ useEffect(() => {
               placeholder="todo title ..."
             />
             <Tooltip title="Add todo" placement="top" arrow>
-              <IconButton size="large" onClick={()=>setIsDialogOpen(true)}>
+              <IconButton size="large" onClick={() => setIsDialogOpen(true)}>
                 <Iconify
                   width={35}
                   color="primary.main"
@@ -132,23 +156,20 @@ useEffect(() => {
           </Box>
         </Card>
         {isDialogOpen && (
-        <NewEditTodoDialog
-        handleTodo={handleAddTodo}
-          open={isDialogOpen}
-          onClose={() => {
-            setIsDialogOpen(false);
-          }}
-        />
-      )}
+          <NewEditTodoDialog
+            handleTodo={handleAddTodo}
+            open={isDialogOpen}
+            onClose={() => {
+              setIsDialogOpen(false);
+            }}
+          />
+        )}
       </Grid>
-      {
-        todos.map((todo)=> (
-
-      <Grid key={todo.id} xs={12} >
-         <TodoCard todoItem={todo} />
-      </Grid>
-        ))
-      }
+      {todos.map((todo) => (
+        <Grid key={todo.id} xs={12}>
+          <TodoCard todoItem={todo} />
+        </Grid>
+      ))}
     </Grid>
   );
 }
