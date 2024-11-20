@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-        <Box sx={{bgcolor:'primary.light', height:'100vh'}}>
+        <Box sx={{bgcolor:'primary.light', height:'100vh', overflowX:"hidden"}}>
           <Container >
             <View />
           </Container>

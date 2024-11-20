@@ -58,14 +58,14 @@ export default function View() {
   return (
     <Grid container justifyContent="center" spacing={3}>
       <Grid xs={12}>
-        <Card sx={{ px: 3, py: 2, my: 3, minHeight: 4, borderRadius: 9 }}>
+        <Card sx={{ px: 3, py: 2, my: 3, minHeight: 4, borderRadius: 9, }}>
           <CardHeader
-            sx={{ textAlign: "center" }}
+            sx={{ textAlign: "center", display: 'flex', justifyContent:{xs:'center', md:'space-between'}, alignItems:{md:'center', xs:'space-between'}, flexDirection:{md:'row', xs:'column'} }}
             action={
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "end",
+                  justifyContent: "center",
                   alignItems: "center",
                   textAlign: "center",
                 }}
@@ -81,7 +81,7 @@ export default function View() {
                     size={isSmallScreen ? "medium" : "small"}
                   >
                     <Iconify
-                      width={isSmallScreen ? 35 : 25}
+                      width={isSmallScreen ? 35 : 23}
                       color={Boolean(searchTerm) ? "grey.400" : "primary.main"}
                       icon="solar:list-bold-duotone"
                     />
@@ -98,7 +98,7 @@ export default function View() {
                     size={isSmallScreen ? "medium" : "small"}
                   >
                     <Iconify
-                      width={isSmallScreen ? 35 : 25}
+                      width={isSmallScreen ? 35 : 23}
                       color={Boolean(searchTerm) ? "grey.400" : "primary.main"}
                       icon="solar:pin-list-bold"
                     />
@@ -115,7 +115,7 @@ export default function View() {
                     size={isSmallScreen ? "medium" : "small"}
                   >
                     <Iconify
-                      width={isSmallScreen ? 35 : 25}
+                      width={isSmallScreen ? 35 : 23}
                       color={Boolean(searchTerm) ? "grey.400" : "primary.main"}
                       icon="solar:list-check-minimalistic-bold"
                     />
@@ -125,7 +125,7 @@ export default function View() {
             }
             title={
               <Typography
-                sx={{ ml: isSmallScreen ? 20 : 14 }}
+                sx={{ml: {md:20, xs:0}, py:1}}
                 color="primary.main"
                 variant="h4"
               >
