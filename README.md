@@ -37,6 +37,9 @@ This repository contains a **Dynamic To-Do List Application** built with **React
 ### 8. **Save Tasks**
 - Tasks are stored in `localStorage` to ensure they persist even after the page is refreshed.
 
+### 9. **Animations**
+- Smooth animations are added for task using a library **framer-motion**, enhancing the user experience.
+
 ---
 
 ## State Management
