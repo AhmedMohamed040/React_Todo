@@ -14,8 +14,27 @@ import TodoCard from "../../components/todo-item";
 import { NewEditTodoDialog } from "../../components/todo-dialog";
 import { useEffect, useState } from "react";
 import { useTodosContext } from "../../contexts/todos-context";
+import { motion, Variants } from "framer-motion";
 
 export default function View() {
+  const upSide: Variants = {
+    offscreen: {
+      y: 100,
+      opacity: 0,
+      
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+
+      transition: {
+        type: "spring",
+        bounce: 0.5,
+        duration: 1,
+        delay: 0.5
+      }
+    }
+  };
   const theme = useTheme();
   const todosContext = useTodosContext();
   let [todos, setTodos] = useState(todosContext?.todos);
@@ -167,7 +186,17 @@ export default function View() {
       </Grid>
       {todos.map((todo) => (
         <Grid key={todo.id} xs={12}>
-          <TodoCard todo={todo} />
+             <motion.div
+              className="card-container"
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: false, amount: 0.2 }}
+            >
+
+           <motion.div variants={upSide} >
+             <TodoCard todo={todo} />
+           </motion.div>
+            </motion.div>
         </Grid>
       ))}
     </Grid>
