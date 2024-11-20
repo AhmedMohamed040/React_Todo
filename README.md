@@ -1,4 +1,4 @@
-# Dynamic To-Do List Application
+# Dynamic React_Todo Application
 
 ## Overview
 
@@ -39,8 +39,8 @@ This repository contains a **Dynamic To-Do List Application** built with **React
 
 ---
 
-## Bonus Features (Optional)
-- **State Management**: Use React Context or Redux to handle the task state more efficiently.
+## State Management
+- **React Context**: Use React Context to handle the task state more efficiently.
 
 ---
 
@@ -48,5 +48,5 @@ This repository contains a **Dynamic To-Do List Application** built with **React
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/todo-list-app.git
-   cd todo-list-app
+   git clone https://github.com/AhmedMohamed040/React_Todo.git
+   cd React_Todo
